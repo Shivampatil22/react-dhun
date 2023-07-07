@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import SwipeArt from '../mainscreen/artistSwiper'
 
 import { useMusic } from '../../../control/MainControl';
-import Trending from '../../trending';
 
 const Librarypage = () => {
   const [data, setdata] = useState([]);

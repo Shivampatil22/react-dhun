@@ -22,7 +22,7 @@ export default function ArtistSwiper() {
                     clickable: true,
                 }}
                 modules={[Pagination]}
-                className=" max-w-[100%]"
+                className=" max-w-[95%]"
             >
                 <SwiperSlide style={{width:"fit-content"}}><FavArt/></SwiperSlide>
                 <SwiperSlide style={{ width: "fit-content" }}><FavArt /></SwiperSlide>

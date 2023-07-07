@@ -2,10 +2,11 @@
 import { BiPlayCircle } from "react-icons/bi";
 import {  AiOutlineHeart  } from "react-icons/ai";
 import "./SongTitle.css"
+import { useMusic } from "../../../control/MainControl";
 
 function SongTitle({data}) {
+    const control=useMusic();
    const { artistName, trackName, artworkUrl100, previewUrl }=data
-    console.log(artistName);
     return (
         <li className="songItem w-full h-20">
          
@@ -14,8 +15,8 @@ function SongTitle({data}) {
                 <div className="subtitle">{artistName}</div>
             </h5>
             <div className='icons'>
-            <BiPlayCircle className='PlayIcon' />
-            <AiOutlineHeart className='AiOutlineHeart' />
+            <BiPlayCircle className='PlayIcon' onClick={()=>{control.PlaySearch(data)}}  />
+            <AiOutlineHeart className='AiOutlineHeart' onClick={()=>{control.LikeSearch(data)}}/>
             </div>
         </li>
     );

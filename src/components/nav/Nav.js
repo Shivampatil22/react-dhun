@@ -20,7 +20,7 @@ const Nav = () => {
       headers: { authorization: localStorage.getItem("token") }
     });
     result = await result.json();
-    console.log(result)
+   
     setdata(result);
   }
   useEffect(()=>{

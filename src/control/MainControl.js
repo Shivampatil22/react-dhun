@@ -25,6 +25,9 @@ export const MainControl = (props) => {
     const returnInfo = () => {
         return songInfo;
     };
+    const RecentSongs=()=>{
+        return recent;
+    }
 
     // Function to play a specific song from the list
     const playSong = (num) => {
@@ -38,13 +41,12 @@ export const MainControl = (props) => {
         setI(num);
         const tempSongInfo = { 'artist': artist_name, 'imgSrc': img, 'title': song_name };
         setRecent([...recent, tempSongInfo]);
-        console.log(recent);
         setSongInfo(tempSongInfo);
     };
 
     // Function to handle play/pause functionality
-    const handlePlay = () => {
-        if (music.paused || music.currentTime <= 0) {
+    const handlePlay = (state) => {
+        if ((music.paused || music.currentTime <= 0)&& state==false) {
             music.play();
             setIsPlaying(true);
         } else {
@@ -74,6 +76,9 @@ export const MainControl = (props) => {
         nextMusic.play();
         setI(num);
         setIsPlaying(true);
+        const tempSongInfo = { 'artist': artist_name, 'imgSrc': img, 'title': song_name };
+        setRecent([...recent, tempSongInfo]);
+        setSongInfo(tempSongInfo);
     };
 
     // Function to play the previous song
@@ -92,6 +97,9 @@ export const MainControl = (props) => {
         nextMusic.play();
         setI(num);
         setIsPlaying(true);
+        const tempSongInfo = { 'artist': artist_name, 'imgSrc': img, 'title': song_name };
+        setRecent([...recent, tempSongInfo]);
+        setSongInfo(tempSongInfo);
     };
 
     // Function to search for music
@@ -168,11 +176,43 @@ export const MainControl = (props) => {
         console.log(result);
         return result;
     };
+    const PlaySearch=(data)=>{
+        const { artistName, trackName, artworkUrl100, previewUrl } = data
+        music.pause();
+        music.currentTime = 0;
+        const nextMusic = new Audio(previewUrl);
+        setMusic(nextMusic);
+        setIsPlaying(true);
+        nextMusic.play();
+        const tempSongInfo = { 'artist': artistName, 'imgSrc':artworkUrl100, 'title': trackName };
+        setRecent([...recent, tempSongInfo]);
+        console.log(recent);
+        setSongInfo(tempSongInfo);
+    }
+    const LikeSearch=async(data)=>{
+        const { artistName, trackName, artworkUrl100, previewUrl } = data
+        let raw = JSON.stringify({
+            "artist": artistName,
+            "imgSrc": artworkUrl100,
+            "audioSrc": previewUrl,
+            "title": trackName,
+            "username": username
+        });
+        let result = await fetch("http://localhost:9090/song", {
+            method: 'post',
+            body: raw,
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: localStorage.getItem("token")
+            },
+        });
+    }
 
     return (
         // Provide the music context to the child components
         <MusicContext.Provider value={{ handlePlay, searcher, getMusic, addSearch, liked, 
-        handleNextSong, handlePreviousSong, getLiked, playSong, returnInfo,showSearch }}>
+        handleNextSong, handlePreviousSong, getLiked, playSong, returnInfo,showSearch,PlaySearch,
+        LikeSearch,RecentSongs}}>
             {props.children}
         </MusicContext.Provider>
     );

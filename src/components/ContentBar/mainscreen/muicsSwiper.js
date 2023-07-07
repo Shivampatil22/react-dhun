@@ -26,7 +26,7 @@ export default function TrendingSwiper() {
                     clickable: true,
                 }}
                 modules={[Pagination]}
-                className=" max-w-[100%]"
+                className=" max-w-[95%]"
             >    
             {
                 SongData.map((curr)=>{
