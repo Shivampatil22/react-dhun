@@ -3,6 +3,7 @@ import React from 'react'
 
 import "./mainscreen.css"
 import  ArtistSwiper from './artistSwiper'
+import TrendingSwiper from './muicsSwiper'
 const MainScreen = () => {
   return (
     <div className=' w-full h-full overflow-y-scroll'>
@@ -16,8 +17,7 @@ const MainScreen = () => {
         <div className="font-medium text-3xl text-slate-300 leading-8 mb-3">
           Trending Music
         </div>
-        <ArtistSwiper />
-        
+       <TrendingSwiper/>    
       </div>
 
  

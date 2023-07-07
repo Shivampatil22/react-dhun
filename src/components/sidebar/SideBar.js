@@ -11,9 +11,9 @@ const SideBar = () => {
       <h1 className='greet'>Good Morning</h1>
       <div className='nav_link'>
       
-        <span><Link className='lin' to='/'><AiFillHome className='icon' />Home</Link></span>
-        <span><Link className='lin' to='/search'><ImSearch />Search</Link> </span>
-        <span><Link className='lin' to='/library'> <BiLibrary className='icon' />Library</Link></span>
+        <span><Link className='lin' to='/musicapp'><AiFillHome className='icon' />Home</Link></span>
+        <span><Link className='lin' to='/musicapp/search'><ImSearch />Search</Link> </span>
+        <span><Link className='lin' to='/musicapp/library'> <BiLibrary className='icon' />Library</Link></span>
       </div>
     
    

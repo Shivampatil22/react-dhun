@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.Trending{
+    display: flex;
+}
+
+.outer{
+    width: 10rem;
+    margin: 1rem;
+    background-color: rgb(42, 32, 87);
+    padding: 1rem;
+    border-radius: 1.5rem;
+}
+
+.song{
+    width: 10rem;
+    height: 7rem;
+    border-radius: 1rem;
+}
+
+.songname{
+    color: white;
+}
+
+.singername{
+    color: rgb(201, 201, 201);
+}
+
+.heading{
+    color: rgb(0, 0, 0);
+    font-size: 3rem;
+}
+
+.playbtn{
+    width: 2rem; 
+
+}
