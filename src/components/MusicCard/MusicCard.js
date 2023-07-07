@@ -20,8 +20,13 @@ const MusicCard = ({data}) => {
   // })
 
   const Handlelike=()=>{
-      if(like){
-        // Liked();
+      if(like==false){
+        Liked();
+    
+      }
+      else{
+        control.deleteLiked(song_name);
+     
       }
 
     setLike(!like);
@@ -32,7 +37,7 @@ const MusicCard = ({data}) => {
       "title": song_name,
       "audioSrc": audio,
       "username": username,
-      "imgSrc": img,
+      "imgsrc": img,
       "artist": artist_name
     });
     let result = await fetch("http://localhost:9090/song", {
@@ -40,7 +45,7 @@ const MusicCard = ({data}) => {
       body: data,
       headers: {
         'Content-Type': 'application/json',
-        headers: { authorization: localStorage.getItem("token") }
+         authorization: localStorage.getItem("token") 
 
       },
     })

@@ -2,11 +2,29 @@
 import { BiPlayCircle } from "react-icons/bi";
 import {  AiOutlineHeart  } from "react-icons/ai";
 import "./SongTitle.css"
+import { useState } from "react";
 import { useMusic } from "../../../control/MainControl";
-
+import { AiFillHeart } from "react-icons/ai";
 function SongTitle({data}) {
     const control=useMusic();
-   const { artistName, trackName, artworkUrl100, previewUrl }=data
+   const { artistName, trackName, artworkUrl100, previewUrl}=data
+    const [like, setLike] = useState(false);
+    const Handlelike = () => {
+        if (like == false) {
+            control.LikeSearch(data);
+            setLike(!like);
+        }
+        else{
+            control.deleteLiked (trackName);
+            setLike(!like);
+        }
+        
+           
+            
+      
+
+        
+    }
     return (
         <li className="songItem w-full h-20">
          
@@ -16,7 +34,7 @@ function SongTitle({data}) {
             </h5>
             <div className='icons'>
             <BiPlayCircle className='PlayIcon' onClick={()=>{control.PlaySearch(data)}}  />
-            <AiOutlineHeart className='AiOutlineHeart' onClick={()=>{control.LikeSearch(data)}}/>
+            <button onClick={() => { Handlelike(data) }}>{like ? <AiFillHeart className='heart' /> : <AiOutlineHeart className='heart' />}</button>
             </div>
         </li>
     );

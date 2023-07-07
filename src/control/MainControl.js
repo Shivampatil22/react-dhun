@@ -20,6 +20,7 @@ export const MainControl = (props) => {
     const [data, setData] = useState(Song);
     const [songInfo, setSongInfo] = useState({});
     const [searchdata,setSearch]=useState([]);
+    const [sendlikes,setlike]=useState([]);
 
     // Function to retrieve the current song information
     const returnInfo = () => {
@@ -29,9 +30,12 @@ export const MainControl = (props) => {
         return recent;
     }
 
+    const SendLike=()=>{
+        return sendlikes;
+    }
     // Function to play a specific song from the list
     const playSong = (num) => {
-        const { song_name, artist_name, img, audio } = data[num];
+        const { song_name, artist_name, img, audio } = data[num-1];
         music.pause();
         music.currentTime = 0;
         const nextMusic = new Audio(audio);
@@ -43,7 +47,19 @@ export const MainControl = (props) => {
         setRecent([...recent, tempSongInfo]);
         setSongInfo(tempSongInfo);
     };
-
+    const playLib=(data)=>{
+        const { title, imgsrc, audioSrc, artist } = data
+        music.pause();
+        music.currentTime = 0;
+        const nextMusic = new Audio(audioSrc);
+        setMusic(nextMusic);
+        setIsPlaying(true);
+        nextMusic.play();
+        const tempSongInfo = { 'artist': artist, 'imgSrc':imgsrc, 'title': title };
+        setRecent([...recent, tempSongInfo]);
+        console.log(recent);
+        setSongInfo(tempSongInfo);
+    }
     // Function to handle play/pause functionality
     const handlePlay = (state) => {
         if ((music.paused || music.currentTime <= 0)&& state==false) {
@@ -152,7 +168,7 @@ export const MainControl = (props) => {
     const liked = async ({ artist, imgSrc, audioSrc, title }) => {
         let raw = JSON.stringify({
             "artist": artist,
-            "imgSrc": imgSrc,
+            "imgsrc": imgSrc,
             "audioSrc": audioSrc,
             "title": title,
             "username": username
@@ -173,8 +189,20 @@ export const MainControl = (props) => {
             headers: { authorization: localStorage.getItem("token") }
         });
         result = await result.json();
-        console.log(result);
-        return result;
+        
+        setlike(result);
+        
+        
+    };
+    const deleteLiked = async (srcs) => {
+        
+       
+        let result = await fetch(`http://localhost:9090/deletesong/shiv/${srcs}`, {
+            method: 'delete',
+            headers: { authorization: localStorage.getItem("token") }
+        });
+        
+       
     };
     const PlaySearch=(data)=>{
         const { artistName, trackName, artworkUrl100, previewUrl } = data
@@ -190,10 +218,11 @@ export const MainControl = (props) => {
         setSongInfo(tempSongInfo);
     }
     const LikeSearch=async(data)=>{
-        const { artistName, trackName, artworkUrl100, previewUrl } = data
+        const { artistName, trackName,artworkUrl100, previewUrl } = data;
+        
         let raw = JSON.stringify({
             "artist": artistName,
-            "imgSrc": artworkUrl100,
+            "imgsrc": artworkUrl100,
             "audioSrc": previewUrl,
             "title": trackName,
             "username": username
@@ -212,7 +241,7 @@ export const MainControl = (props) => {
         // Provide the music context to the child components
         <MusicContext.Provider value={{ handlePlay, searcher, getMusic, addSearch, liked, 
         handleNextSong, handlePreviousSong, getLiked, playSong, returnInfo,showSearch,PlaySearch,
-        LikeSearch,RecentSongs}}>
+        LikeSearch,RecentSongs,deleteLiked,SendLike,playLib}}>
             {props.children}
         </MusicContext.Provider>
     );

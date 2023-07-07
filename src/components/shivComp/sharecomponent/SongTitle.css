@@ -56,3 +56,8 @@
     padding-right:5% ;
     justify-content:space-between;
 }
+.heart {
+    color: red;
+    width: 1.5rem;
+    height: 1.5rem;
+}
