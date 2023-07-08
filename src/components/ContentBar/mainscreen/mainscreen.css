@@ -3,3 +3,16 @@
     background-color: rgb(199, 148, 247);
     padding: 1%;
 }
+
+.mainscreencontainer{
+    background: url('background1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+}
+
+
+.favartist{
+    padding-bottom: 1.5rem;
+}

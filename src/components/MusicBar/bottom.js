@@ -35,49 +35,49 @@ const MusicBar = () => {
 
   return (
     <>
-      {imgSrc && <div className="flex bg-blue-400 h-full w-full">
+      {imgSrc && <div className="flex bg-[#0f0f0f] h-full w-full">
         {/* Song Info */}
         <span className="flex py-[1%] px-[2%] w-72  ">
           <span className="img_box">
             <img src={imgSrc} alt="titlaae" className='h' />
           </span>
-          <span className="song_details">
+          <span className="song_details text-slate-50">
             <span>{title}</span>
             <span>{artist}</span>
           </span>
         </span>
 
         {/* Music Controls */}
-        <div className='control'>
+        <div className='control text-slate-50'>
           <span className="icons">
             {/* Repeat Button */}
             <button>
-              <CiRepeat className='icony' />
+              <CiRepeat className='icony text-slate-50' />
             </button>
 
             {/* Previous Button */}
             <button>
-              <AiFillStepBackward className='icony' onClick={() => musicControl.handlePreviousSong()} />
+              <AiFillStepBackward className='icony text-slate-50' onClick={() => musicControl.handlePreviousSong()} />
             </button>
 
             {/* Play/Pause Button */}
             <button onClick={() => { handle() }} id='masterPlay'>
-              {isPlaying ? <BsFillPauseFill className='icony' /> : <FaPlay className='iconys' />}
+              {isPlaying ? <BsFillPauseFill className='icony text-slate-50' /> : <FaPlay className='iconys text-slate-50' />}
             </button>
 
             {/* Next Button */}
             <button>
-              <AiFillStepForward className='icony' onClick={() => musicControl.handleNextSong()} />
+              <AiFillStepForward className='icony text-slate-50' onClick={() => musicControl.handleNextSong()} />
             </button>
 
             {/* Shuffle Button */}
             <button>
-              <BiShuffle className='icony' />
+              <BiShuffle className='icony text-slate-50' />
             </button>
           </span>
 
           {/* Progress Bar */}
-          <span className="progress_bar">
+          <span className="progress_bar text-slate-50">
             <span> 0:0</span>
             <input
               type="range"
@@ -89,7 +89,7 @@ const MusicBar = () => {
 
         {/* Volume Controls */}
         <span className="volume">
-          <BsFillVolumeUpFill className='vol' />
+          <BsFillVolumeUpFill className='vol text-slate-50' />
           <input type='range' height={"3"}></input>
         </span>
       </div>}

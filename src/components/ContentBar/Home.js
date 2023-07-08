@@ -7,16 +7,16 @@ import { Outlet } from "react-router-dom"
 const MusicApp = () => {
    
     return (
-        <div className="bg-red-200 max-w-screen h-screen">
-            <div className="bg-blue-100 h-[88%] w-full flex">
-                <div className="bg-green-200 min-w-[20%] h-full m-0">
+        <div className=" max-w-screen h-screen">
+            <div className=" h-[88%] w-full flex">
+                <div className=" min-w-[20%] h-full m-0">
                     <SideBar/>
                 </div>
                 <div className="w-[80%] h-full flex flex-col ">
-                    <div className="flex  bg-slate-400 h-[3rem] w-full">
+                    <div className="flex   h-[3rem] w-full">
                         <Nav />
                     </div>
-                    <div className="bg-green-400 h-[94%] ">
+                    <div className=" h-[94%] ">
                         <Outlet/>
                     </div>
                 </div>

@@ -7,10 +7,11 @@
     margin-bottom: 10px;
     cursor: pointer;
     transition: 0.3s linear;
-    background-color: #aaadb3;
+    background-color: #00000055;
+    border-radius: 2rem;
 }
 .songItem:hover {
-    background: rgb(105, 105, 105, 0.1);
+    background: rgba(0, 0, 0, 0.1);
 }
 .songItem span {
     font-size: 12px;
@@ -21,9 +22,11 @@
     width: 50px;
     height: 50px;
     margin-left: 25px;
+    border-radius: 0.5rem;
 
 }
 .songItem h5 {
+    color: white;
     font-size: 15px;
     font-weight: bolder;
     margin-left: 15px;
@@ -34,7 +37,7 @@
 }
 .songItem h5 .subtitle {
     font-size: 11px;
-    color:#4c5262;
+    color:#9093a0;
 }
 .songItem .bi {
     position: absolute;
@@ -49,6 +52,9 @@
     width: 30px;
     /* background-color: #4c5262; */
 
+}
+.PlayIcon{
+    filter: invert(100%);
 }
 .icons{
     width: 100%;

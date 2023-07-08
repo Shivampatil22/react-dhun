@@ -8,17 +8,24 @@
 }
 
 .outer{
-    width: 10rem;
+    width: 13rem;
+    height: 18rem;
     margin: 1rem;
-    background-color: rgb(42, 32, 87);
-    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.8rem;
     border-radius: 1.5rem;
+    border: 2px solid white;
+}
+
+.trendingnames{
+    flex: 3;
 }
 
 .song{
-    width: 10rem;
-    height: 7rem;
-    border-radius: 1rem;
+    margin: auto;
+    height: 10rem;
+    width: 90%;
+    border-radius: 1.5rem;
 }
 
 .songname{

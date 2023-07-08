@@ -5,12 +5,12 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { BsPlayCircle } from "react-icons/bs";
 import { useState } from 'react';
-const MusicCard = ({data}) => {
- 
+const MusicCard = ({ data }) => {
+
   const { song_name, id, artist_name, img, audio } = data;
   const username = localStorage.getItem("user");
   const control = useMusic();
-  const [like,setLike]=useState(false)
+  const [like, setLike] = useState(false)
   // console.log({
   //   "title": song_name,
   //   "audioSrc": audio,
@@ -19,15 +19,15 @@ const MusicCard = ({data}) => {
   //   "artist": artist_name
   // })
 
-  const Handlelike=()=>{
-      if(like==false){
-        Liked();
-    
-      }
-      else{
-        control.deleteLiked(song_name);
-     
-      }
+  const Handlelike = () => {
+    if (like == false) {
+      Liked();
+
+    }
+    else {
+      control.deleteLiked(song_name);
+
+    }
 
     setLike(!like);
   }
@@ -45,7 +45,7 @@ const MusicCard = ({data}) => {
       body: data,
       headers: {
         'Content-Type': 'application/json',
-         authorization: localStorage.getItem("token") 
+        authorization: localStorage.getItem("token")
 
       },
     })
@@ -58,18 +58,18 @@ const MusicCard = ({data}) => {
       <div className="outer">
         <div>
           <img className="song" src={img} alt="Image" />
-          <button onClick={() => { control.playSong(id) }}><BsPlayCircle className="playbtn absolute top-16 left-[5rem] animi "  /></button>
+          <button onClick={() => { control.playSong(id) }}><BsPlayCircle className="playbtn absolute top-[6rem] left-[6.5rem] animi " /></button>
         </div>
-     
+
         <div className='flex py-4'>
-          <div>
+          <div className='trendingnames'>
             <div className="songname">{song_name}</div>
             <div className="singername">{artist_name}</div>
           </div>
 
-          <div className='flex items-center justify-center w-full flex-col'>
-          
-            <button onClick={() => { Handlelike() }}>{like ?<AiFillHeart className='heart'/> :<AiOutlineHeart className='heart' />  }</button>
+          <div className='flex items-center justify-center w-full flex-col flex-1'>
+
+            <button onClick={() => { Handlelike() }}>{like ? <AiFillHeart className='heart' /> : <AiOutlineHeart className='heart' />}</button>
           </div>
         </div>
       </div>
