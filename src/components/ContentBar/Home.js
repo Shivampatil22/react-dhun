@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom"
 const MusicApp = () => {
    
     return (
-        <div className=" max-w-screen h-screen">
+        <div className=" max-w-screen h-screen bg-black">
             <div className=" h-[88%] w-full flex">
                 <div className=" min-w-[20%] h-full m-0">
                     <SideBar/>

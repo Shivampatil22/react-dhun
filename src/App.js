@@ -11,7 +11,7 @@ import Gallery from "./HomeAndLogin/Gallery";
 import Login from "./HomeAndLogin/Login";
 function App() {
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <BrowserRouter>
       <Routes>
         <Route path="/musicapp" Component={MusicApp}>

@@ -15,7 +15,7 @@ import Song from "../../../db/data";
 import MusicCard from "../../MusicCard/MusicCard";
 
 
-export default function TrendingSwiper() {
+export default function TrendingSwiper({id,lim}) {
     const [SongData,setData]=useState(Song);
     return (
         <>
@@ -28,9 +28,10 @@ export default function TrendingSwiper() {
                 modules={[Pagination]}
                 className=" max-w-[95%]"
             >    
+            <div>Trending songs</div>
             {
                 SongData.map((curr)=>{
-                  if(curr.id<11){
+                  if(curr.id<id && curr.id>lim){
                     return(
                        <SwiperSlide style={{ width: "fit-content" }} key={curr.id}><MusicCard data={curr} /></SwiperSlide> 
                     )

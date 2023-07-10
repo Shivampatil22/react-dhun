@@ -8,7 +8,7 @@ const Search = () => {
   let data = control.showSearch();
 
   useEffect(() => {
-
+     
     setdata(data.results);
   }, [data]);
 

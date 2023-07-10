@@ -81,7 +81,7 @@ const MusicBar = () => {
             <span> 0:0</span>
             <input
               type="range"
-
+              value={0}
             />
             <span> 4:30</span>
           </span>

@@ -18,13 +18,13 @@ const MainScreen = () => {
         <div className="font-medium text-3xl text-slate-300 leading-8 mb-3">
           Trending Music
         </div>
-        <TrendingSwiper />
+        <TrendingSwiper id={11} lim={0} />
       </div>
       <div className="w-full flex flex-col my-10 ">
-        <div className="font-medium text-3xl text-slate-300 leading-8 mb-3">
-          Trending Music
+        <div className="font-medium text-3xl text-slate-300 leading-8 mb-3 z-10">
+          Songs For You
         </div>
-        <TrendingSwiper />
+        <TrendingSwiper id={20} lim={11} />
       </div>
 
 

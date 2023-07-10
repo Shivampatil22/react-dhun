@@ -64,7 +64,7 @@
 }
 .progress_bar input[type=range]{
     width: 100%;
-    accent-color: rgb(0, 45, 95);
+    accent-color: rgb(252, 253, 253);
     height: 5px;
 }
 .progress_bar span{
